@@ -1238,3 +1238,351 @@
 //    return users.some(user => user.isActive === true);
 // };
 // // Пиши код выше этой строки
+
+
+//  30 
+
+// теория (Метод reduce())
+// массив.reduce((previousValue, element, index, array) => {
+//   // Тело коллбек-функции
+// }, initialValue);
+
+// const total = [2, 7, 3, 14, 6].reduce((previousValue, number) => {
+//   return previousValue + number;
+// }, 0);
+
+// console.log(total); // 32
+// # Вначале метод reduce() создаёт внутреннюю переменную-аккумулятор и
+// # присваивает ей значение параметра initialValue или первого элемента
+// # перебираемого массива, если initialValue не задан.
+// previousValue = 0
+
+// # Далее коллбек-функция вызывается для каждого элемента массива. Текущее значение
+// # параметра previousValue это то, что вернула коллбек-функция на прошлой итерации.
+// Итерация 1 -> previousValue = 0 -> number = 2 -> return 0 + 2 -> return 2
+// Итерация 2 -> previousValue = 2 -> number = 7 -> return 2 + 7 -> return 9
+// Итерация 3 -> previousValue = 9 -> number = 3 -> return 9 + 3 -> return 12
+// Итерация 4 -> previousValue = 12 -> number = 14 -> return 12 + 14 -> return 26
+// Итерация 5 -> previousValue = 26 -> number = 6 -> return 26 + 6 -> return 32
+
+// # После того как весь массив перебран, метод reduce() возвращает значение аккумулятора.
+// Результат - 32
+
+//  задача
+// const players = {
+//     mango: 1270,
+//     poly: 468,
+//     ajax: 710,
+//     kiwi: 244
+// };
+// const playtimes = Object.values(players); // [1270, 468, 710, 244]
+// // Пиши код ниже этой строки
+
+// const totalPlayTime = playtimes.reduce((previousValue, number) => { return previousValue + number;
+// }, 0);                                                                  
+
+// // Пиши код выше этой строки
+// const averagePlayTime = totalPlayTime / playtimes.length;
+
+// console.log(totalPlayTime);
+// console.log(averagePlayTime);
+
+
+//  31
+//  теория (Метод reduce() и массив объектов)
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Поли', score: 59 },
+//   { name: 'Аякс', score: 37 },
+//   { name: 'Киви', score: 94 },
+//   { name: 'Хьюстон', score: 64 },
+// ];
+
+// // Название аккумулятора может быть произвольным, это просто параметр функции
+// const totalScore = students.reduce((total, student) => {
+//   return total + student.score;
+// }, 0);
+
+// const averageScore = totalScore / students.length;
+// console.log(averageScore);
+
+//  задача
+// const players = [
+//   { name: 'Манго', playtime: 1270, gamesPlayed: 4 },
+//   { name: 'Поли', playtime: 469, gamesPlayed: 2 },
+//   { name: 'Аякс', playtime: 690, gamesPlayed: 3 },
+//   { name: 'Киви', playtime: 241, gamesPlayed: 1 },
+// ];
+// // Пиши код ниже этой строки
+
+// const totalAveragePlaytimePerGame = players.reduce((total, player) => {
+//  return total + (player.playtime / player.gamesPlayed)}, 0);
+// console.log(totalAveragePlaytimePerGame);
+
+
+//  32
+//  (Задача. Общий баланс пользователей)
+
+// const users = [
+//   {
+//     name: 'Moore Hensley',
+//     email: 'moorehensley@indexia.com',
+//     eyeColor: 'blue',
+//     friends: ['Sharron Pace'],
+//     isActive: false,
+//     balance: 2811,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Sharlene Bush',
+//     email: 'sharlenebush@tubesys.com',
+//     eyeColor: 'blue',
+//     friends: ['Briana Decker', 'Sharron Pace'],
+//     isActive: true,
+//     balance: 3821,
+//     gender: 'female'
+//   },
+//   {
+//     name: 'Ross Vazquez',
+//     email: 'rossvazquez@xinware.com',
+//     eyeColor: 'green',
+//     friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+//     isActive: false,
+//     balance: 3793,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Elma Head',
+//     email: 'elmahead@omatom.com',
+//     eyeColor: 'green',
+//     friends: ['Goldie Gentry', 'Aisha Tran'],
+//     isActive: true,
+//     balance: 2278,
+//     gender: 'female'
+//   },
+//   {
+//     name: 'Carey Barr',
+//     email: 'careybarr@nurali.com',
+//     eyeColor: 'blue',
+//     friends: ['Jordan Sampson', 'Eddie Strong'],
+//     isActive: true,
+//     balance: 3951,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Blackburn Dotson',
+//     email: 'blackburndotson@furnigeer.com',
+//     eyeColor: 'brown',
+//     friends: ['Jacklyn Lucas', 'Linda Chapman'],
+//     isActive: false,
+//     balance: 1498,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Sheree Anthony',
+//     email: 'shereeanthony@kog.com',
+//     eyeColor: 'brown',
+//     friends: ['Goldie Gentry', 'Briana Decker'],
+//     isActive: true,
+//     balance: 2764,
+//     gender: 'female'
+//   }
+// ]
+
+// // Пиши код ниже этой строки
+// const calculateTotalBalance = users => {
+//   return users.reduce((total, user) => total + user.balance, 0);  
+// };
+// // Пиши код выше этой строки
+
+// console.log(calculateTotalBalance(users));
+
+
+//  33
+// (Задача. Общее количество друзей)
+
+// const users = [
+//   {
+//     name: 'Moore Hensley',
+//     email: 'moorehensley@indexia.com',
+//     eyeColor: 'blue',
+//     friends: ['Sharron Pace'],
+//     isActive: false,
+//     balance: 2811,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Sharlene Bush',
+//     email: 'sharlenebush@tubesys.com',
+//     eyeColor: 'blue',
+//     friends: ['Briana Decker', 'Sharron Pace'],
+//     isActive: true,
+//     balance: 3821,
+//     gender: 'female'
+//   },
+//   {
+//     name: 'Ross Vazquez',
+//     email: 'rossvazquez@xinware.com',
+//     eyeColor: 'green',
+//     friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+//     isActive: false,
+//     balance: 3793,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Elma Head',
+//     email: 'elmahead@omatom.com',
+//     eyeColor: 'green',
+//     friends: ['Goldie Gentry', 'Aisha Tran'],
+//     isActive: true,
+//     balance: 2278,
+//     gender: 'female'
+//   },
+//   {
+//     name: 'Carey Barr',
+//     email: 'careybarr@nurali.com',
+//     eyeColor: 'blue',
+//     friends: ['Jordan Sampson', 'Eddie Strong'],
+//     isActive: true,
+//     balance: 3951,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Blackburn Dotson',
+//     email: 'blackburndotson@furnigeer.com',
+//     eyeColor: 'brown',
+//     friends: ['Jacklyn Lucas', 'Linda Chapman'],
+//     isActive: false,
+//     balance: 1498,
+//     gender: 'male'
+//   },
+//   {
+//     name: 'Sheree Anthony',
+//     email: 'shereeanthony@kog.com',
+//     eyeColor: 'brown',
+//     friends: ['Goldie Gentry', 'Briana Decker'],
+//     isActive: true,
+//     balance: 2764,
+//     gender: 'female'
+//   }
+// ]
+// // Пиши код ниже этой строки
+// const getTotalFriendCount = users => {
+ 
+//    return users.reduce((total, user) => total + user.friends.length, 0);
+// };
+// // Пиши код выше этой строки
+// console.log(getTotalFriendCount(users));
+
+
+//  34
+//  теория (Метод sort())
+// Массив чисел будет отсортирован по возврастанию
+// const scores = [61, 19, 74, 35, 92, 56];
+// scores.sort();
+// console.log(scores); // [19, 35, 56, 61, 74, 92]
+
+// // Массив строк сортируется по алфавиту
+// const students = ["Вика", "Андрей", "Олег", "Юля", "Борис", "Катя"];
+// students.sort();
+// console.log(students); // [ 'Андрей', 'Борис', 'Вика', 'Катя', 'Олег', 'Юля' ]
+
+// // При этом порядковый номер заглавных букв меньше чем у прописных
+// const letters = ["b", "B", "a", "A", "c", "C"];
+// letters.sort();
+// console.log(letters); // ['A', 'B', 'C', 'a', 'b', 'c']
+
+//  делают копию и сортируют уже ее
+// const scores = [61, 19, 74, 35, 92, 56];
+// const ascendingScores = [...scores].sort();
+
+// console.log(scores); // [61, 19, 74, 35, 92, 56]
+// console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+//  задача
+// const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// const authors = [
+//   'Ли Танит',
+//   'Бернард Корнуэлл',
+//   'Роберт Шекли',
+//   'Федор Достоевский'
+// ];
+// // Пиши код ниже этой строки
+
+// const ascendingReleaseDates = [...releaseDates].sort();
+
+// const alphabeticalAuthors = [...authors].sort();
+
+// console.log(releaseDates);
+// console.log(authors);
+// console.log(ascendingReleaseDates);
+// console.log(alphabeticalAuthors);
+
+
+//  35
+
+//  теория(Свой порядок сортировки чисел)
+// массив.sort((firstEl, secondEl) => {
+//   // Тело коллбек-функции
+// });
+
+//  сортировка по возрастанию
+// const scores = [61, 19, 74, 35, 92, 56];
+// const ascendingScores = [...scores].sort((a, b) => a - b);
+// console.log(ascendingScores); // [19, 35, 56, 61, 74, 92]
+
+//  сортировка по убыванию
+// const scores = [61, 19, 74, 35, 92, 56];
+// const descendingScores = [...scores].sort((a, b) => b - a);
+// console.log(descendingScores); // [92, 74, 61, 56, 35, 19]
+
+//  задача
+// const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+// // Пиши код ниже этой строки
+
+// const ascendingReleaseDates = [...releaseDates].sort((x,y)=> x - y);
+
+// const descendingReleaseDates = [...releaseDates].sort((x, y) => y - x);
+
+// console.log(ascendingReleaseDates);
+// console.log(descendingReleaseDates);
+
+
+//  36
+
+// теория (Свой порядок сортировки строк)
+// firstString.localeCompare(secondString)
+// // Он вызывается на строке которую нужно сравнить (firstString) с той, что передана ему как аргумент (secondString).
+// 'a'.localeCompare('b'); // -1
+// 'b'.localeCompare('a'); // 1
+// 'a'.localeCompare('a'); // 0
+// 'b'.localeCompare('b'); // 0
+// const students = ['Вика', 'Андрей', 'Олег', 'Юля', 'Борис', 'Катя'];
+
+// const inAlphabetOrder = [...students].sort((a, b) => a.localeCompare(b));
+// console.log(inAlphabetOrder); // ['Андрей', 'Борис', 'Вика', 'Катя', 'Олег', 'Юля']
+
+// const inReversedOrder = [...students].sort((a, b) => b.localeCompare(a));
+// console.log(inReversedOrder); // ['Юля', 'Олег', 'Катя', 'Вика', 'Борис', 'Андрей']
+
+//  задача
+// const authors = [
+//     'Ли Танит',
+//     'Бернард Корнуэлл',
+//     'Роберт Шекли',
+//     'Федор Достоевский',
+//     'Говард Лавкрафт'
+//   ];
+  // Пиши код ниже этой строки
+  
+//   const authorsInAlphabetOrder = [...authors].sort((a,b) => a.localeCompare(b));
+  
+// const authorsInReversedOrder = [...authors].sort((a, b) => b.localeCompare(a));
+  
+// console.log(authorsInAlphabetOrder);
+// console.log(authorsInReversedOrder);
+
+
+//  37
+
+//  теория (Сортировка объектов)
